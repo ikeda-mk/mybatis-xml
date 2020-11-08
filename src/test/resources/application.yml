@@ -1,0 +1,9 @@
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:;DB_CLOSE_ON_EXIT=TRUE;MODE=MySQL
+    username: sa
+    password: ''

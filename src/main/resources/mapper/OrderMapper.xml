@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ec.repository.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.example.ec.model.Order">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="ordered_at" jdbcType="TIMESTAMP" property="orderedAt" />
+        <result column="delivered_at" jdbcType="TIMESTAMP" property="deliveredAt" />
+        <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+        <result column="order_status_id" jdbcType="INTEGER" property="orderStatusId" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        id, ordered_at, delivered_at, customer_id, order_status_id
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        select
+        <include refid="Base_Column_List" />
+        from orders
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.example.ec.model.Order">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        insert into orders (id, ordered_at, delivered_at,
+        customer_id, order_status_id)
+        values (#{id,jdbcType=BIGINT}, #{orderedAt,jdbcType=TIMESTAMP}, #{deliveredAt,jdbcType=TIMESTAMP},
+        #{customerId,jdbcType=BIGINT}, #{orderStatusId,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.example.ec.model.Order">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        insert into orders
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="orderedAt != null">
+                ordered_at,
+            </if>
+            <if test="deliveredAt != null">
+                delivered_at,
+            </if>
+            <if test="customerId != null">
+                customer_id,
+            </if>
+            <if test="orderStatusId != null">
+                order_status_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="orderedAt != null">
+                #{orderedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deliveredAt != null">
+                #{deliveredAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerId != null">
+                #{customerId,jdbcType=BIGINT},
+            </if>
+            <if test="orderStatusId != null">
+                #{orderStatusId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.ec.model.Order">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        update orders
+        <set>
+            <if test="orderedAt != null">
+                ordered_at = #{orderedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deliveredAt != null">
+                delivered_at = #{deliveredAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerId != null">
+                customer_id = #{customerId,jdbcType=BIGINT},
+            </if>
+            <if test="orderStatusId != null">
+                order_status_id = #{orderStatusId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.ec.model.Order">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        update orders
+        set ordered_at = #{orderedAt,jdbcType=TIMESTAMP},
+        delivered_at = #{deliveredAt,jdbcType=TIMESTAMP},
+        customer_id = #{customerId,jdbcType=BIGINT},
+        order_status_id = #{orderStatusId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
