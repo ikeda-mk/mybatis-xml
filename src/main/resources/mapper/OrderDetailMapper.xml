@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ec.repository.mapper.OrderDetailMapper">
+
+    <resultMap id="OrderDetailBase" type="com.example.ec.model.OrderDetail">
+        <id property="id" column="id" />
+        <result property="orderedAt" column="ordered_at" />
+        <result property="deliveredAt" column="delivered_at"/>
+        <result property="customerId" column="customer_id"/>
+        <result property="orderStatusId" column="order_status_id"/>
+
+        <collection property="products" ofType="com.example.ec.model.Product">
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+        </collection>
+    </resultMap>
+
+    <resultMap id="OrderDetailMin" type="com.example.ec.model.OrderDetail">
+        <!-- @mbg.generated: generated automatically, do not modify! -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="ordered_at" jdbcType="TIMESTAMP" property="orderedAt" />
+        <result column="delivered_at" jdbcType="TIMESTAMP" property="deliveredAt" />
+        <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+        <result column="order_status_id" jdbcType="INTEGER" property="orderStatusId" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="OrderDetailBase">
+        select * from orders as o
+            inner join order_has_product as op
+                on o.id = op.order_id
+            inner join product as p
+                on p.id = op.product_id;
+    </select>
+
+    <select id="selectMin" resultMap="OrderDetailMin">
+        select * from orders
+    </select>
+</mapper>
