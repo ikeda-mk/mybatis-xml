@@ -7,7 +7,7 @@
         <result property="orderedAt" column="ordered_at" />
         <result property="deliveredAt" column="delivered_at"/>
         <result property="customerId" column="customer_id"/>
-        <result property="orderStatusId" column="order_status_id"/>
+        <result property="orderStatus" column="order_status_id" javaType="com.example.ec.constant.OrderStatus" typeHandler="com.example.ec.repository.mapper.OrderStatusTypeHandler"/>
 
         <association property="customer" javaType="com.example.ec.model.Customer">
             <id property="id" column="customer_id"/>
@@ -26,7 +26,7 @@
         <result column="ordered_at" jdbcType="TIMESTAMP" property="orderedAt" />
         <result column="delivered_at" jdbcType="TIMESTAMP" property="deliveredAt" />
         <result column="customer_id" jdbcType="BIGINT" property="customerId" />
-        <result column="order_status_id" jdbcType="INTEGER" property="orderStatusId" />
+        <result property="orderStatus" column="order_status_id" javaType="com.example.ec.constant.OrderStatus" typeHandler="com.example.ec.repository.mapper.OrderStatusTypeHandler"/>
     </resultMap>
 
     <select id="selectAll" resultMap="OrderDetailBase">
