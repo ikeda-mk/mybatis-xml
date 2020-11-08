@@ -13,7 +13,7 @@ public class OrderDetail {
     private Long customerId;
     private Integer orderStatusId;
 
-//    private Customer customer;
+    private Customer customer;
     private List<Product> products;
 
 }
