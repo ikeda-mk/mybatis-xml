@@ -7,11 +7,14 @@ public enum Country {
     CN(3, "CN"),
     DE(4, "DE");
 
-    private int code;
-    private String name;
+    private final int code;
+    private final String name;
 
     Country(int code, String name) {
+        this.code = code;
+        this.name = name;
     }
+
 
     public int getCode() {
         return code;

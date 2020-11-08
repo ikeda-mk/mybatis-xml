@@ -1,5 +1,6 @@
 package com.example.ec.model;
 
+import com.example.ec.constant.OrderStatus;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ public class OrderDetail {
     private Date orderedAt;
     private Date deliveredAt;
     private Long customerId;
-    private Integer orderStatusId;
+    private OrderStatus orderStatus;
 
     private Customer customer;
     private List<Product> products;

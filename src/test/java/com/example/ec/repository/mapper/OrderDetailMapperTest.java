@@ -30,6 +30,7 @@ class OrderDetailMapperTest {
         log.info(orders.toString());
 
         for (OrderDetail order : orders) {
+
             log.info(order.getId().toString());
 
             order.getProducts().forEach(p -> {

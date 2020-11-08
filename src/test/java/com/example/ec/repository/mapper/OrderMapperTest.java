@@ -1,5 +1,6 @@
 package com.example.ec.repository.mapper;
 
+import com.example.ec.constant.OrderStatus;
 import com.example.ec.model.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +25,7 @@ class OrderMapperTest {
         order.setId(100L);
         order.setOrderedAt(new Date());
         order.setCustomerId(1L);
-        order.setOrderStatusId(1);
+        order.setOrderStatus(OrderStatus.NEW);
 
         var cnt = orderMapper.insert(order);
         assertEquals(1, cnt);
@@ -38,6 +39,6 @@ class OrderMapperTest {
         assertNotNull(order);
         assertEquals(1L, order.getId());
         assertEquals(1L, order.getCustomerId());
-        assertEquals(2, order.getOrderStatusId());
+        assertEquals(OrderStatus.NEW, order.getOrderStatus());
     }
 }
